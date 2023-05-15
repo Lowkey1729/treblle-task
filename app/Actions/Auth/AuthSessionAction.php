@@ -8,7 +8,7 @@ use App\Services\Concerns\Auth\Login;
 use App\Services\Contracts\Auth\AuthInterface;
 use Illuminate\Support\Facades\Auth;
 
-class LoginAction implements AuthInterface
+class AuthSessionAction implements AuthInterface
 {
     use Login;
 

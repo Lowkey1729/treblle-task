@@ -1,11 +1,11 @@
 <?php
 
-use App\Actions\Auth\LoginAction;
+use App\Actions\Auth\AuthSessionAction;
 use App\Exceptions\AuthError;
 use App\Models\User;
 
 beforeEach(function () {
-    $this->loginAction = app(LoginAction::class);
+    $this->loginAction = app(AuthSessionAction::class);
 });
 
 test('it throws exception when the credentials are incorrect', function () {
