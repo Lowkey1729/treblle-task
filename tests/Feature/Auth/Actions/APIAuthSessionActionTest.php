@@ -1,11 +1,11 @@
 <?php
 
-use App\Actions\Auth\AuthAPISessionAction;
+use App\Actions\Auth\API\APIAuthSessionAction;
 use App\Exceptions\AuthError;
 use App\Models\User;
 
 beforeEach(function () {
-    $this->authAPISessionAction = app(AuthAPISessionAction::class);
+    $this->authAPISessionAction = app(APIAuthSessionAction::class);
 });
 
 test('it throws exception when the credentials are incorrect', function () {

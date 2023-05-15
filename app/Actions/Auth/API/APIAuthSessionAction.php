@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Actions\Auth;
+namespace App\Actions\Auth\API;
 
 use App\Exceptions\AuthError;
 use App\Models\User;
 use App\Services\Concerns\Auth\Login;
 use App\Services\Contracts\Auth\AuthInterface;
 
-class AuthAPISessionAction implements AuthInterface
+class APIAuthSessionAction implements AuthInterface
 {
     use Login;
 
