@@ -8,9 +8,7 @@ use Illuminate\Http\JsonResponse;
 final class ApiResponse
 {
     /**
-     * @param array<string, mixed>|object $data
-     * @param int $httpStatusCode
-     * @return JsonResponse
+     * @param  array<string, mixed>|object  $data
      */
     public static function success(
         array|object $data,
@@ -25,19 +23,16 @@ final class ApiResponse
     }
 
     /**
-     * @param string $errorMessage
-     * @param array<string, mixed> $data
-     * @param array<string, mixed> $errors
-     * @param array<string, mixed> $errorTrace
-     * @param int $httpStatusCode
-     * @return JsonResponse
+     * @param  array<string, mixed>  $data
+     * @param  array<string, mixed>  $errors
+     * @param  array<string, mixed>  $errorTrace
      */
     public static function failed(
         string $errorMessage,
-        array  $data = [],
-        array  $errors = [],
-        array  $errorTrace = [],
-        int    $httpStatusCode = 200
+        array $data = [],
+        array $errors = [],
+        array $errorTrace = [],
+        int $httpStatusCode = 200
     ): JsonResponse {
         return response()->json([
             'status' => ApiResponseEnum::FAILED->value,

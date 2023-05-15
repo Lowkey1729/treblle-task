@@ -5,7 +5,6 @@ namespace App\Services\Concerns;
 use App\Services\Helpers\ApiResponse;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
-use Illuminate\Validation\ValidationException;
 
 trait ValidationError
 {
