@@ -1,11 +1,12 @@
 <?php
 
-use App\Actions\Auth\AuthWebSessionAction;
+use App\Actions\Auth\Web\WebAuthSessionAction;
 use App\Exceptions\AuthError;
 use App\Models\User;
 
 beforeEach(function () {
-    $this->authWebSessionAction = app(AuthWebSessionAction::class);
+    $this->authWebSessionAction = app(WebAuthSessionAction::class);
+    $this->app['request']->setLaravelSession($this->app['session']->driver('array'));
 });
 
 test('it throws exception when the credentials are incorrect', function () {
@@ -30,6 +31,7 @@ test('it throws an exception when the email is not verified', function () {
 })->throws(AuthError::class, 'Email has not been verified.', 401);
 
 test('it returns user model after authenticating user successfully via web', function () {
+
     $user = User::factory()->create();
     $data = [
         'email' => $user->email,
@@ -37,6 +39,8 @@ test('it returns user model after authenticating user successfully via web', fun
     ];
 
     $result = $this->authWebSessionAction->authenticateUser($data);
+
+
     expect($result)
         ->toBeInstanceOf(User::class);
 
@@ -44,9 +48,7 @@ test('it returns user model after authenticating user successfully via web', fun
 
 test('it can logout a user via web', function () {
     $user = User::factory()->create();
-    $this->actingAs($user)
-        ->withSession(['foo' => 'bar'])
-        ->get('/');
+    $this->actingAs($user);
 
     $this->authWebSessionAction->logoutUser();
 

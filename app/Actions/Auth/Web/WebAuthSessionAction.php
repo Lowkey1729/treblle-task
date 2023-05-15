@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Actions\Auth;
+namespace App\Actions\Auth\Web;
 
 use App\Exceptions\AuthError;
 use App\Models\User;
@@ -8,7 +8,7 @@ use App\Services\Concerns\Auth\Login;
 use App\Services\Contracts\Auth\AuthInterface;
 use Illuminate\Support\Facades\Auth;
 
-class AuthWebSessionAction implements AuthInterface
+class WebAuthSessionAction implements AuthInterface
 {
     use Login;
 
@@ -24,7 +24,7 @@ class AuthWebSessionAction implements AuthInterface
 
         Auth::login($user);
         request()->session()->regenerate();
-        
+
         return $user;
     }
 
