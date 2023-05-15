@@ -6,14 +6,13 @@ use App\Exceptions\AuthError;
 use App\Models\User;
 use App\Services\Concerns\Auth\Login;
 use App\Services\Contracts\Auth\AuthInterface;
-use Illuminate\Support\Facades\Auth;
 
-class AuthSessionAction implements AuthInterface
+class AuthAPISessionAction implements AuthInterface
 {
     use Login;
 
     /**
-     * @param array<string, mixed> $data
+     * @param  array<string, mixed>  $data
      *
      * @throws AuthError
      */
@@ -22,22 +21,15 @@ class AuthSessionAction implements AuthInterface
         $this->failedAuthentication($data);
         $user = $this->getUser();
 
-        return request()->wantsJson() ?
-            $this->authenticateViaAPI($user) :
-            $this->authenticateViaWeb($user);
-
-    }
-
-    protected function authenticateViaAPI(User $user): User
-    {
         $token = $user->createToken(sprintf('%s token', $user->email))->plainTextToken;
         $user->plainTextToken = $token;
+
         return $user;
+
     }
 
-    protected function authenticateViaWeb(User $user): User
+    public function logoutUser(): void
     {
-        Auth::login($user);
-        return $user;
+        request()->user()?->deleteAccessToken();
     }
 }

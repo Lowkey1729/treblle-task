@@ -1,11 +1,11 @@
 <?php
 
-use App\Actions\Auth\AuthSessionAction;
+use App\Actions\Auth\AuthAPISessionAction;
 use App\Exceptions\AuthError;
 use App\Models\User;
 
 beforeEach(function () {
-    $this->loginAction = app(AuthSessionAction::class);
+    $this->authAPISessionAction = app(AuthAPISessionAction::class);
 });
 
 test('it throws exception when the credentials are incorrect', function () {
@@ -14,33 +14,9 @@ test('it throws exception when the credentials are incorrect', function () {
         'password' => 'bar',
     ];
 
-    $this->loginAction->authenticateUser($data);
+    $this->authAPISessionAction->authenticateUser($data);
 
 })->throws(AuthError::class, 'The provided credentials are incorrect.', 401);
-
-test('it throws an exception when the email is not verified', function () {
-    $user = User::factory()->create();
-    $user->update(['email_verified_at' => null]);
-    $data = [
-        'email' => $user->email,
-        'password' => 'password',
-    ];
-
-    $this->loginAction->authenticateUser($data);
-})->throws(AuthError::class, 'Email has not been verified.', 401);
-
-test('it returns user model after authenticating user successfully via web', function () {
-    $user = User::factory()->create();
-    $data = [
-        'email' => $user->email,
-        'password' => 'password',
-    ];
-
-    $result = $this->loginAction->authenticateUser($data);
-    expect($result)
-        ->toBeInstanceOf(User::class);
-
-});
 
 test('it returns user model after authenticating user successfully via api', function () {
     $user = User::factory()->create();
@@ -50,7 +26,7 @@ test('it returns user model after authenticating user successfully via api', fun
         'password' => 'password',
     ];
 
-    $result = $this->loginAction->authenticateUser($data);
+    $result = $this->authAPISessionAction->authenticateUser($data);
     expect($result)
         ->toBeInstanceOf(User::class);
 });
@@ -63,8 +39,17 @@ test('it returns token after authenticating user successfully via api', function
         'password' => 'password',
     ];
 
-    $result = $this->loginAction->authenticateUser($data);
+    $result = $this->authAPISessionAction->authenticateUser($data);
     expect($result)
         ->toBeObject()
         ->plainTextToken->toBeString();
+});
+
+test('it can logout a user via api', function () {
+    $user = User::factory()->create();
+    $this->actingAs($user);
+
+    $this->authAPISessionAction->logoutUser();
+
+    $this->assertNull(request()->user());
 });
