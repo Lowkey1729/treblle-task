@@ -40,7 +40,6 @@ test('it returns user model after authenticating user successfully via web', fun
 
     $result = $this->authWebSessionAction->authenticateUser($data);
 
-
     expect($result)
         ->toBeInstanceOf(User::class);
 
