@@ -22,4 +22,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::prefix('auth')->group(function () {
     Route::post('/login', [AuthAPISessionController::class, 'loginUser'])
         ->name('auth.login-user');
+
+});
+
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    Route::get('auth/logout', [AuthAPISessionController::class, 'logoutUser'])
+        ->name('auth.logout-user');
 });

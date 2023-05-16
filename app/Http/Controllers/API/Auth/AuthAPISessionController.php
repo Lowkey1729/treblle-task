@@ -8,6 +8,7 @@ use App\Http\Requests\Auth\LoginRequest;
 use App\Services\Contracts\Auth\AuthInterface;
 use App\Services\Helpers\ApiResponse;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Log;
 
 class AuthAPISessionController extends Controller
 {
@@ -33,6 +34,7 @@ class AuthAPISessionController extends Controller
         try {
             $this->auth->logoutUser();
         } catch (\Exception $exception) {
+            Log::error($exception);
             return ApiResponse::failed('An unexpected error was encountered.', httpStatusCode: 500);
         }
 

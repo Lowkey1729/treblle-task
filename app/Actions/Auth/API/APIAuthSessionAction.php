@@ -12,7 +12,7 @@ class APIAuthSessionAction implements AuthInterface
     use Login;
 
     /**
-     * @param  array<string, mixed>  $data
+     * @param array<string, mixed> $data
      *
      * @throws AuthError
      */
@@ -30,6 +30,8 @@ class APIAuthSessionAction implements AuthInterface
 
     public function logoutUser(): void
     {
-        request()->user()?->deleteAccessToken();
+        $user = \request()->user();
+        $user->tokens()->delete();
+
     }
 }

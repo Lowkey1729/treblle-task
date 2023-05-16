@@ -55,3 +55,18 @@ test('it returns token after the user is authenticated', function () {
         ->plainTextToken->toBeString();
 });
 
+test('it returns 401 when an unauthenticated user tries to logout', function () {
+    $this->getJson(route('auth.logout-user'))
+        ->assertStatus(401)
+        ->json();
+});
+
+test('user session destroys after token has been deleted', function () {
+    $user = User::factory()->create();
+    $this->actingAs($user, 'sanctum');
+
+    $this->getJson(route('auth.logout-user'))
+        ->assertStatus(200);
+
+});
+
