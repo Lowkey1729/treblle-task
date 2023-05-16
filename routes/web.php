@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\Web\Auth\AuthWebSessionController;
-use App\Http\Controllers\Web\Auth\RegisterUserController;
+use App\Http\Controllers\Web\Auth\WebAuthSessionController;
+use App\Http\Controllers\Web\Auth\WebRegisterUserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,7 +25,7 @@ Route::prefix('web')->group(function () {
         //        Route::post('/login', [AuthWebSessionController::class, 'loginUser'])
         //            ->name('auth-web.');
 
-        Route::post('/register', RegisterUserController::class)
+        Route::post('/register', WebRegisterUserController::class)
             ->name('auth.web.register-user');
 
     });

@@ -9,7 +9,7 @@ use App\Services\Helpers\ApiResponse;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Log;
 
-class RegisterUserController extends Controller
+class APIRegisterUserController extends Controller
 {
     public function __construct(protected readonly RegisterInterFace $register)
     {

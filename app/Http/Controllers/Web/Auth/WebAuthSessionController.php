@@ -9,7 +9,7 @@ use App\Providers\RouteServiceProvider;
 use App\Services\Contracts\Auth\AuthInterface;
 use Illuminate\Http\RedirectResponse;
 
-class AuthWebSessionController extends Controller
+class WebAuthSessionController extends Controller
 {
     public function __construct(protected readonly AuthInterface $auth)
     {

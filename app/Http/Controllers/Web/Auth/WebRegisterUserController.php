@@ -9,7 +9,7 @@ use App\Services\Contracts\Auth\RegisterInterFace;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Log;
 
-class RegisterUserController extends Controller
+class WebRegisterUserController extends Controller
 {
     public function __construct(protected readonly RegisterInterFace $register)
     {

@@ -10,7 +10,7 @@ use App\Services\Helpers\ApiResponse;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Log;
 
-class AuthAPISessionController extends Controller
+class APIAuthSessionController extends Controller
 {
     public function __construct(protected readonly AuthInterface $auth)
     {

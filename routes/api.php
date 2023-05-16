@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\API\Auth\AuthAPISessionController;
-use App\Http\Controllers\API\Auth\RegisterUserController;
+use App\Http\Controllers\API\Auth\APIAuthSessionController;
+use App\Http\Controllers\API\Auth\APIRegisterUserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,15 +21,15 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::prefix('auth')->group(function () {
-    Route::post('/login', [AuthAPISessionController::class, 'loginUser'])
+    Route::post('/login', [APIAuthSessionController::class, 'loginUser'])
         ->name('auth.login-user');
 
-    Route::post('/register', RegisterUserController::class)
+    Route::post('/register', APIRegisterUserController::class)
         ->name('auth.register-user');
 
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
-    Route::get('auth/logout', [AuthAPISessionController::class, 'logoutUser'])
+    Route::get('auth/logout', [APIAuthSessionController::class, 'logoutUser'])
         ->name('auth.logout-user');
 });

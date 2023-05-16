@@ -5,9 +5,9 @@ namespace App\Providers;
 use App\Actions\Auth\API\APIAuthSessionAction;
 use App\Actions\Auth\Web\WebAuthSessionAction;
 use App\Actions\Auth\Web\WebRegisterUserAction;
-use App\Http\Controllers\API\Auth\AuthAPISessionController;
-use App\Http\Controllers\Web\Auth\AuthWebSessionController;
-use App\Http\Controllers\Web\Auth\RegisterUserController;
+use App\Http\Controllers\API\Auth\APIAuthSessionController;
+use App\Http\Controllers\Web\Auth\WebAuthSessionController;
+use App\Http\Controllers\Web\Auth\WebRegisterUserController;
 use App\Services\Contracts\Auth\AuthInterface;
 use App\Services\Contracts\Auth\RegisterInterFace;
 use Illuminate\Database\Eloquent\Model;
@@ -20,15 +20,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->when(AuthWebSessionController::class)
+        $this->app->when(WebAuthSessionController::class)
             ->needs(AuthInterface::class)
             ->give(fn () => new WebAuthSessionAction());
 
-        $this->app->when(AuthAPISessionController::class)
+        $this->app->when(APIAuthSessionController::class)
             ->needs(AuthInterface::class)
             ->give(fn () => new APIAuthSessionAction());
 
-        $this->app->when(RegisterUserController::class)
+        $this->app->when(WebRegisterUserController::class)
             ->needs(RegisterInterFace::class)
             ->give(fn () => new WebRegisterUserAction());
 
