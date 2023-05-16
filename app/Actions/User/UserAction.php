@@ -16,7 +16,7 @@ class UserAction implements UserInterface
     {
         $user = User::query()->where('uuid', $uuid)->first();
         if (is_null($user)) {
-            throw new UserError('User does not exist');
+            throw new UserError('User does not exist', 404);
         }
 
         return $user;
@@ -32,7 +32,7 @@ class UserAction implements UserInterface
     {
         $user = User::query()->where('uuid', $uuid)->first();
         if (is_null($user)) {
-            throw new UserError('User does not exist');
+            throw new UserError('User does not exist', 404);
         }
 
        return tap($user)->update([

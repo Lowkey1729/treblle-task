@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\API\Auth\APIAuthSessionController;
 use App\Http\Controllers\API\Auth\APIRegisterUserController;
+use App\Http\Controllers\API\User\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +31,15 @@ Route::prefix('auth')->group(function () {
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+
+    Route::prefix('user')->group(function () {
+        Route::get('/view/{uuid}', [UserController::class, 'viewUserDetails'])
+            ->name('view-user-details');
+
+        Route::post('update/{uuid}', [UserController::class, 'updateUserDetails'])
+            ->name('update-user-details');
+    });
+
     Route::get('auth/logout', [APIAuthSessionController::class, 'logoutUser'])
         ->name('auth.logout-user');
 });
