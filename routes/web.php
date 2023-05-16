@@ -22,11 +22,16 @@ Route::get('/', function () {
 Route::prefix('web')->group(function () {
 
     Route::prefix('auth')->group(function () {
-        //        Route::post('/login', [AuthWebSessionController::class, 'loginUser'])
-        //            ->name('auth-web.');
+        Route::post('/login', [WebAuthSessionController::class, 'loginUser'])
+            ->name('auth-web.login-user');
 
         Route::post('/register', WebRegisterUserController::class)
             ->name('auth.web.register-user');
 
+    });
+
+    Route::middleware(['auth:web', 'verified'])->group(function () {
+        Route::get('auth/logout', [WebAuthSessionController::class, 'logoutUser'])
+            ->name('auth-web.logout-user');
     });
 });
