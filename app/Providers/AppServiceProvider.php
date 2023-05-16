@@ -4,9 +4,12 @@ namespace App\Providers;
 
 use App\Actions\Auth\API\APIAuthSessionAction;
 use App\Actions\Auth\Web\WebAuthSessionAction;
+use App\Actions\Auth\Web\WebRegisterUserAction;
 use App\Http\Controllers\API\Auth\AuthAPISessionController;
 use App\Http\Controllers\Web\Auth\AuthWebSessionController;
+use App\Http\Controllers\Web\Auth\RegisterUserController;
 use App\Services\Contracts\Auth\AuthInterface;
+use App\Services\Contracts\Auth\RegisterInterFace;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
 
@@ -24,6 +27,11 @@ class AppServiceProvider extends ServiceProvider
         $this->app->when(AuthAPISessionController::class)
             ->needs(AuthInterface::class)
             ->give(fn () => new APIAuthSessionAction());
+
+        $this->app->when(RegisterUserController::class)
+            ->needs(RegisterInterFace::class)
+            ->give(fn () => new WebRegisterUserAction());
+
     }
 
     /**

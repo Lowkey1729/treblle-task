@@ -1,7 +1,5 @@
 <?php
 
-use App\Models\User;
-
 test('it validates registration request', function () {
     $result = $this->postJson(route('auth.register-user'), [])
         ->assertStatus(422)

@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Web\Auth\AuthWebSessionController;
+use App\Http\Controllers\Web\Auth\RegisterUserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +17,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::prefix('web')->group(function () {
+
+    Route::prefix('auth')->group(function () {
+        //        Route::post('/login', [AuthWebSessionController::class, 'loginUser'])
+        //            ->name('auth-web.');
+
+        Route::post('/register', RegisterUserController::class)
+            ->name('auth.web.register-user');
+
+    });
 });
