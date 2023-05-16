@@ -35,6 +35,7 @@ class AuthAPISessionController extends Controller
             $this->auth->logoutUser();
         } catch (\Exception $exception) {
             Log::error($exception);
+
             return ApiResponse::failed('An unexpected error was encountered.', httpStatusCode: 500);
         }
 

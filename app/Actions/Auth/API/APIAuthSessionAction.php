@@ -12,7 +12,7 @@ class APIAuthSessionAction implements AuthInterface
     use Login;
 
     /**
-     * @param array<string, mixed> $data
+     * @param  array<string, mixed>  $data
      *
      * @throws AuthError
      */

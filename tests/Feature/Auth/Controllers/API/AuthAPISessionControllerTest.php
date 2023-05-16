@@ -69,4 +69,3 @@ test('user session destroys after token has been deleted', function () {
         ->assertStatus(200);
 
 });
-
