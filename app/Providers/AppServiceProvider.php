@@ -3,9 +3,11 @@
 namespace App\Providers;
 
 use App\Actions\Auth\API\APIAuthSessionAction;
+use App\Actions\Auth\API\APIRegisterUserAction;
 use App\Actions\Auth\Web\WebAuthSessionAction;
 use App\Actions\Auth\Web\WebRegisterUserAction;
 use App\Http\Controllers\API\Auth\APIAuthSessionController;
+use App\Http\Controllers\API\Auth\APIRegisterUserController;
 use App\Http\Controllers\Web\Auth\WebAuthSessionController;
 use App\Http\Controllers\Web\Auth\WebRegisterUserController;
 use App\Services\Contracts\Auth\AuthInterface;
@@ -20,9 +22,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->when(WebAuthSessionController::class)
-            ->needs(AuthInterface::class)
-            ->give(fn () => new WebAuthSessionAction());
+        $this->app->when(APIRegisterUserController::class)
+            ->needs(RegisterInterFace::class)
+            ->give(fn () => new APIRegisterUserAction());
 
         $this->app->when(APIAuthSessionController::class)
             ->needs(AuthInterface::class)
@@ -31,6 +33,10 @@ class AppServiceProvider extends ServiceProvider
         $this->app->when(WebRegisterUserController::class)
             ->needs(RegisterInterFace::class)
             ->give(fn () => new WebRegisterUserAction());
+
+        $this->app->when(WebAuthSessionController::class)
+            ->needs(AuthInterface::class)
+            ->give(fn () => new WebAuthSessionAction());
 
     }
 
