@@ -19,11 +19,11 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->when(AuthWebSessionController::class)
             ->needs(AuthInterface::class)
-            ->give(fn () => WebAuthSessionAction::class);
+            ->give(fn () => new WebAuthSessionAction());
 
         $this->app->when(AuthAPISessionController::class)
             ->needs(AuthInterface::class)
-            ->give(fn () => APIAuthSessionAction::class);
+            ->give(fn () => new APIAuthSessionAction());
     }
 
     /**
