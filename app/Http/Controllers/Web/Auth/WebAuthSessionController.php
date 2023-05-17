@@ -43,7 +43,7 @@ class WebAuthSessionController extends Controller
             return redirect()->back()->with('error', 'An unexpected error was encountered');
         }
 
-        return redirect('/')->with('success', 'User logged out successfully.');
+        return redirect(route('auth.login-form'))->with('success', 'User logged out successfully.');
 
     }
 }

@@ -13,6 +13,12 @@
             <div class="mr-4 mt-1">
               <p class="text-black">{{ auth.user.full_name }}</p>
             </div>
+
+              <div>
+                  <Link class="mt-1" href="auth/logout">
+                        Logout
+                  </Link>
+              </div>
           </div>
         </div>
         <div class="md:flex md:flex-grow md:overflow-hidden">
