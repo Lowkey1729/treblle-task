@@ -29,7 +29,7 @@ class UserController extends Controller
             return redirect()->back()->with('error', 'An unexpected error was encountered');
         }
 
-        return Inertia::render('User/Index', [
+        return Inertia::render('User/Edit', [
             'user' => $user
         ]);
     }
