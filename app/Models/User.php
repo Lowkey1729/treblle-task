@@ -6,6 +6,7 @@ namespace App\Models;
 use App\Services\Concerns\Models\HasUUID;
 use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -97,4 +98,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function fullName(): Attribute
+    {
+        return Attribute::get(
+            fn () => $this->first_name.' '.$this->last_name
+        );
+    }
 }
