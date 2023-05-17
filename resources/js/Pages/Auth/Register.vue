@@ -48,13 +48,13 @@
           </text-input>
         </div>
 
-          <div>
-              <text-input v-model:inputValue="form.password_confirmation" placeholder="Confirm your password" :error="form.errors.password_confirmation" class="relative" type="password" autofocus autocapitalize="off">
+        <div>
+          <text-input v-model:inputValue="form.password_confirmation" placeholder="Confirm your password" :error="form.errors.password_confirmation" class="relative" type="password" autofocus autocapitalize="off">
             <span class="absolute inset-y-0 end-0 grid place-content-center px-4">
               <password />
             </span>
-              </text-input>
-          </div>
+          </text-input>
+        </div>
 
         <button type="submit" class="block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white">Create Account</button>
 
