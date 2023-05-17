@@ -10,6 +10,8 @@ use App\Services\Helpers\ApiResponse;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
+use Inertia\Response;
 
 class UserController extends Controller
 {
@@ -17,17 +19,19 @@ class UserController extends Controller
     {
     }
 
-    public function viewUserDetails(string $uuid): RedirectResponse
+    public function viewUserDetails(string $uuid): Response|RedirectResponse
     {
         try {
-            $this->user->viewUserDetails($uuid);
+            $user = $this->user->viewUserDetails($uuid);
         } catch (UserError $error) {
             return redirect()->back()->with('error', $error->getMessage());
         } catch (\Exception $exception) {
             return redirect()->back()->with('error', 'An unexpected error was encountered');
         }
 
-        return redirect('/');
+        return Inertia::render('User/Index', [
+            'user' => $user
+        ]);
     }
 
     public function updateUserDetails(string $uuid, UpdateUserRequest $request): RedirectResponse
@@ -40,7 +44,7 @@ class UserController extends Controller
             return redirect()->back()->with('error', 'An unexpected error was encountered');
         }
 
-        return redirect('/');
+        return redirect()->back()->with('success', 'User details updated successfully');
     }
 
 }

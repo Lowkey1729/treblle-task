@@ -43,7 +43,7 @@ Route::middleware(['auth:web', 'verified'])->group(function () {
         Route::get('/view/{uuid}', [UserController::class, 'viewUserDetails'])
             ->name('web.view-user-details');
 
-        Route::post('update/{uuid}', [UserController::class, 'updateUserDetails'])
+        Route::put('update/{uuid}', [UserController::class, 'updateUserDetails'])
             ->name('web.update-user-details');
     });
 

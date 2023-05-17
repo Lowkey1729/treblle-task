@@ -1,5 +1,6 @@
 <template>
   <div :class="$attrs.class">
+      <label class="form-label"  v-if="label" >{{label}}</label>
     <input :type="type" :value="inputValue" class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm" :class="{ error: error }" v-bind="{ ...$attrs, class: null }" :placeholder="placeholder" @input="$emit('update:inputValue', $event.target.value)" />
     <slot />
   </div>

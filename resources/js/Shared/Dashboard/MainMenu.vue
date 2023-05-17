@@ -2,12 +2,12 @@
   <div>
     <div class="mb-4">
       <Link class="group flex items-center py-3" href="/dashboard">
-        <div :class="isUrl('') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">Dashboard</div>
+        <div :class="isUrl('dashboard') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">Dashboard</div>
       </Link>
     </div>
     <div class="mb-4">
-      <Link class="group flex items-center py-3" href="/dashboard">
-        <div :class="isUrl('organizations') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">Profile</div>
+      <Link class="group flex items-center py-3" :href="`/user/view/${auth.user.uuid}`">
+        <div :class="isUrl('`user/view/${auth.user.uuid}`') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">Profile</div>
       </Link>
     </div>
   </div>
@@ -21,6 +21,9 @@ export default {
   components: {
     // Icon,
     Link,
+  },
+  props: {
+    auth: Object,
   },
   methods: {
     isUrl(...urls) {

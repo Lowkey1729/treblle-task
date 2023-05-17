@@ -14,15 +14,13 @@
               <p class="text-black">{{ auth.user.full_name }}</p>
             </div>
 
-              <div>
-                  <Link class="mt-1" href="auth/logout">
-                        Logout
-                  </Link>
-              </div>
+            <div>
+              <Link class="mt-1" href="auth/logout"> Logout </Link>
+            </div>
           </div>
         </div>
         <div class="md:flex md:flex-grow md:overflow-hidden">
-          <main-menu class="hidden flex-shrink-0 p-12 w-56 bg-indigo-800 overflow-y-auto md:block" />
+          <main-menu :auth="auth" class="hidden flex-shrink-0 p-12 w-56 bg-indigo-800 overflow-y-auto md:block" />
           <div class="px-4 py-8 md:flex-1 md:p-12 md:overflow-y-auto" scroll-region>
             <flash-messages />
             <slot />

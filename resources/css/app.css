@@ -11,4 +11,8 @@
         @apply bg-blue-700;
     }
 
+    .form-label {
+        @apply mb-2 block text-gray-700 select-none;
+    }
+
 }
