@@ -14,7 +14,7 @@
         </div>
         <div class="flex items-center px-8 py-4 bg-gray-50 border-t border-gray-100" />
 
-          <button type="submit" class="block ml-auto w-full m-1 rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white">Update Details</button>
+        <button type="submit" class="block ml-auto w-full m-1 rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white">Update Details</button>
       </form>
     </div>
   </div>

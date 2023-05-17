@@ -1,6 +1,6 @@
 import {createApp, h} from 'vue'
 import {createInertiaApp} from '@inertiajs/vue3'
-import Sidebar from "@/Shared/Dashboard/Sidebar.vue";
+import Sidebar from '@/Shared/Dashboard/Sidebar.vue'
 
 createInertiaApp({
   resolve: name => {
