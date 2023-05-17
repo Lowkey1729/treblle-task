@@ -25,17 +25,18 @@ Route::get('/', function () {
 Route::prefix('auth')->group(function () {
 
     Route::get('/login', [WebAuthSessionController::class, 'loginForm'])
-        ->name('auth.login-form')
-        ->middleware('guest');;
+        ->name('auth.login-form');
 
     Route::post('/login', [WebAuthSessionController::class, 'loginUser'])
-        ->name('auth-web.login-user')
-        ->middleware('guest');;
+        ->name('auth-web.login-user');
 
-    Route::post('/register', WebRegisterUserController::class)
+    Route::get('/register', [WebRegisterUserController::class, 'registerForm'])
+        ->name('auth.register-form');
+
+    Route::post('/register', [WebRegisterUserController::class, 'registerUser'])
         ->name('auth.web.register-user');
 
-});
+})->middleware('guest');
 
 Route::middleware(['auth:web', 'verified'])->group(function () {
 

@@ -8,6 +8,8 @@ use App\Providers\RouteServiceProvider;
 use App\Services\Contracts\Auth\RegisterInterFace;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Log;
+use Inertia\Inertia;
+use Inertia\Response;
 
 class WebRegisterUserController extends Controller
 {
@@ -15,7 +17,12 @@ class WebRegisterUserController extends Controller
     {
     }
 
-    public function __invoke(RegisterRequest $request): RedirectResponse
+    public function registerForm(): Response
+    {
+        return Inertia::render('Auth/Register');
+    }
+
+    public function registerUser(RegisterRequest $request): RedirectResponse
     {
         try {
             $this->register->registerUser($request->validated());
