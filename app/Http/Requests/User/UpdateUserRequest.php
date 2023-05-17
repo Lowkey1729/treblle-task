@@ -4,6 +4,7 @@ namespace App\Http\Requests\User;
 
 use App\Services\Concerns\ValidationError;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateUserRequest extends FormRequest
 {
@@ -27,8 +28,8 @@ class UpdateUserRequest extends FormRequest
         return [
             'first_name' => ['required'],
             'last_name' => ['required'],
-            'email' => ['required', 'string', 'email:rfc', 'max:255'],
-            'phone_number' => ['required',],
+            'email' => ['required', 'string', 'email:rfc', 'max:255', Rule::unique('users')->ignore(request()->user()->id)],
+            'phone_number' => ['required', Rule::unique('users')->ignore(request()->user()->id)],
         ];
     }
 }
