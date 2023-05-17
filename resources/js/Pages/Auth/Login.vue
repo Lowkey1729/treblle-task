@@ -9,7 +9,7 @@
         <p class="text-center text-lg font-medium">Sign in to your account</p>
 
         <div>
-          <text-input v-model:inputValue="form.email" placeholder="Enter email" :error="form.errors.email" class="relative" label="Email" type="email" autofocus autocapitalize="off">
+          <text-input v-model:inputValue="form.email" placeholder="Enter email" :error="form.errors.email" class="relative" type="email" autofocus autocapitalize="off">
             <span class="absolute inset-y-0 end-0 grid place-content-center px-4">
               <email />
             </span>
@@ -17,7 +17,7 @@
         </div>
 
         <div>
-          <text-input v-model:inputValue="form.password" placeholder="Enter password" :error="form.errors.password" class="relative" label="Password" type="password" autofocus autocapitalize="off">
+          <text-input v-model:inputValue="form.password" placeholder="Enter password" :error="form.errors.password" class="relative" type="password" autofocus autocapitalize="off">
             <span class="absolute inset-y-0 end-0 grid place-content-center px-4">
               <password />
             </span>
