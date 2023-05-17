@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import Sidebar from '@/Shared/Dashboard/Sidebar.vue'
+import Sidebar from '@/Shared/Dashboard/NavBar.vue'
 import { Head } from '@inertiajs/vue3'
 
 export default {

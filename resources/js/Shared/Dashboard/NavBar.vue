@@ -36,7 +36,7 @@ import { Link } from '@inertiajs/vue3'
 // import Icon from '@/Shared/Icon'
 import Logo from '@/Shared/Logos/Logo'
 // import Dropdown from '@/Shared/Dropdown'
-import MainMenu from '@/Shared/Dashboard/MainMenu'
+import MainMenu from '@/Shared/Dashboard/SideBar.vue'
 import FlashMessages from '@/Shared/Flash/FlashMessages'
 
 export default {

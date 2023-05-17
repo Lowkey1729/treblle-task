@@ -22,7 +22,7 @@
 
 <script>
 import { Head, Link } from '@inertiajs/vue3'
-import Sidebar from '@/Shared/Dashboard/Sidebar'
+import Sidebar from '@/Shared/Dashboard/NavBar.vue'
 import TextInput from '@/Shared/Forms/TextInput'
 
 export default {
