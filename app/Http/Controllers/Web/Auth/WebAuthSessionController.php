@@ -8,11 +8,18 @@ use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
 use App\Services\Contracts\Auth\AuthInterface;
 use Illuminate\Http\RedirectResponse;
+use Inertia\Inertia;
+use Inertia\Response;
 
 class WebAuthSessionController extends Controller
 {
     public function __construct(protected readonly AuthInterface $auth)
     {
+    }
+
+    public function loginForm(): Response
+    {
+        return Inertia::render('Auth/Login');
     }
 
     public function loginUser(LoginRequest $request): RedirectResponse

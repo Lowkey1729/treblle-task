@@ -23,6 +23,10 @@ Route::get('/', function () {
 Route::prefix('web')->group(function () {
 
     Route::prefix('auth')->group(function () {
+
+        Route::get('/login', [WebAuthSessionController::class, 'loginForm'])
+            ->name('auth.login-form');
+
         Route::post('/login', [WebAuthSessionController::class, 'loginUser'])
             ->name('auth-web.login-user');
 
