@@ -17,7 +17,7 @@ test('it can validate a update user request', function () {
 
     $this->actingAs($user, 'sanctum');
 
-    $result = $this->postJson(route('update-user-details'), [
+    $result = $this->putJson(route('update-user-details'), [
     ])->assertStatus(422)
         ->json();
 

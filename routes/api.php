@@ -37,7 +37,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::get('/view', [UserController::class, 'viewUserDetails'])
             ->name('view-user-details');
 
-        Route::post('update', [UserController::class, 'updateUserDetails'])
+        Route::put('update', [UserController::class, 'updateUserDetails'])
             ->name('update-user-details');
     });
 
