@@ -34,10 +34,10 @@ Route::prefix('auth')->group(function () {
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::prefix('user')->group(function () {
-        Route::get('/view/{uuid}', [UserController::class, 'viewUserDetails'])
+        Route::get('/view', [UserController::class, 'viewUserDetails'])
             ->name('view-user-details');
 
-        Route::post('update/{uuid}', [UserController::class, 'updateUserDetails'])
+        Route::post('update', [UserController::class, 'updateUserDetails'])
             ->name('update-user-details');
     });
 

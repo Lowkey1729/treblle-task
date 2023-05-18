@@ -8,7 +8,7 @@ test('it can view user details via web', function () {
 
     $this->actingAs($user);
 
-    $this->get(route('web.view-user-details', ['uuid' => $user->uuid]))
+    $this->get(route('web.view-user-details'))
         ->assertStatus(200);
 });
 
@@ -17,7 +17,7 @@ test('it returns a failed response when a user cannot be found ', function () {
 
     $this->actingAs($user);
 
-    $result = $this->get(route('web.view-user-details', ['uuid' => 'foo']))
+    $result = $this->get(route('web.view-user-details'))
         ->assertRedirect();
 
 });
@@ -27,7 +27,7 @@ test('it returns a failed response when a user to be updated cannot be found', f
 
     $this->actingAs($user);
 
-     $this->post(route('web.update-user-details', $user->uuid), [
+     $this->post(route('web.update-user-details'), [
         'email' => $user->email,
         'first_name' => 'foo',
         'last_name' => 'bar',
@@ -41,7 +41,7 @@ test('it can validate a update user request', function () {
 
     $this->actingAs($user);
 
-    $this->post(route('web.update-user-details', $user->uuid), [
+    $this->post(route('web.update-user-details'), [
     ])->assertRedirect()
         ->assertSessionHasErrors(
             [

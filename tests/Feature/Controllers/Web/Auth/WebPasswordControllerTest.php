@@ -30,10 +30,10 @@ test('it redirects back with error response when an invalid old password is ente
 
 });
 
-test('it successfully updates user paswwrod', function () {
+test('it successfully updates user password', function () {
     $user = User::factory()->create();
     $this->actingAs($user);
-    $password = fake()->password;
+    $password = fake()->password(9);
     $this->put(route('auth.web.update.password'), [
             'password' => $password,
             'old_password' => 'password',

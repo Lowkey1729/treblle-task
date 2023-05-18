@@ -37,7 +37,7 @@ test('it returns failed response when the old password entered is incorrect', fu
 test('it returns successful response when a password is updated', function () {
     $user = User::factory()->create();
     $this->actingAs($user);
-    $password = fake()->password;
+    $password = fake()->password(9);
     $result = $this->putJson(route('auth.update.password'), [
         'password' => $password,
         'old_password' => 'password',

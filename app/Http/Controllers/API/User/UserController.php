@@ -16,12 +16,10 @@ class UserController extends Controller
     {
     }
 
-    public function viewUserDetails(string $uuid): JsonResponse
+    public function viewUserDetails(): JsonResponse
     {
         try {
-            $user = $this->user->viewUserDetails($uuid);
-        } catch (UserError $error) {
-            return ApiResponse::failed($error->getMessage(), httpStatusCode: $error->getCode());
+            $user = $this->user->viewUserDetails(\request()->user());
         } catch (\Exception $exception) {
             return ApiResponse::failed('An unexpected error was encountered', httpStatusCode: 500);
         }
@@ -29,12 +27,10 @@ class UserController extends Controller
         return ApiResponse::success($user);
     }
 
-    public function updateUserDetails(string $uuid, UpdateUserRequest $request): JsonResponse
+    public function updateUserDetails(UpdateUserRequest $request): JsonResponse
     {
         try {
-            $user = $this->user->editUserDetails($uuid, $request->validated());
-        } catch (UserError $error) {
-            return ApiResponse::failed($error->getMessage(), httpStatusCode: $error->getCode());
+            $user = $this->user->editUserDetails(\request()->user(), $request->validated());
         } catch (\Exception $exception) {
             return ApiResponse::failed('An unexpected error was encountered', httpStatusCode: 500);
         }

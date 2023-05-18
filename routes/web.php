@@ -42,10 +42,10 @@ Route::prefix('auth')->group(function () {
 Route::middleware(['auth:web', 'verified'])->group(function () {
 
     Route::prefix('user')->group(function () {
-        Route::get('/view/{uuid}', [UserController::class, 'viewUserDetails'])
+        Route::get('/view', [UserController::class, 'viewUserDetails'])
             ->name('web.view-user-details');
 
-        Route::put('update/{uuid}', [UserController::class, 'updateUserDetails'])
+        Route::put('update', [UserController::class, 'updateUserDetails'])
             ->name('web.update-user-details');
     });
 

@@ -6,13 +6,13 @@ use App\Models\User;
 
 interface UserInterface
 {
-    public function viewUserDetails(string $uuid): User;
+    public function viewUserDetails(User $user): User;
 
     /**
-     * @param string $uuid
+     * @param User $user
      * @param array<string, mixed> $data
      * @return User
      */
-    public function editUserDetails(string $uuid, array $data): User;
+    public function editUserDetails(User $user, array $data): User;
 
 }
