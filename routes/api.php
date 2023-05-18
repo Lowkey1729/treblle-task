@@ -4,6 +4,7 @@ use App\Http\Controllers\API\Auth\APIAuthSessionController;
 use App\Http\Controllers\API\Auth\APIPasswordController;
 use App\Http\Controllers\API\Auth\APIRegisterUserController;
 use App\Http\Controllers\API\User\UserController;
+use App\Services\Helpers\ApiResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -46,4 +47,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::put('auth/update/password', [APIPasswordController::class, 'updatePassword'])
         ->name('auth.update.password');
+});
+
+
+Route::fallback(function (){
+   return ApiResponse::failed('Resource not found.', httpStatusCode: 404);
 });
