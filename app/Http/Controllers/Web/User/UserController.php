@@ -19,10 +19,10 @@ class UserController extends Controller
     {
     }
 
-    public function viewUserDetails(string $uuid): Response|RedirectResponse
+    public function viewUserDetails(): Response|RedirectResponse
     {
         try {
-            $user = $this->user->viewUserDetails($uuid);
+            $user = $this->user->viewUserDetails(\request()->user());
         } catch (UserError $error) {
             return redirect()->back()->with('error', $error->getMessage());
         } catch (\Exception $exception) {
@@ -34,10 +34,10 @@ class UserController extends Controller
         ]);
     }
 
-    public function updateUserDetails(string $uuid, UpdateUserRequest $request): RedirectResponse
+    public function updateUserDetails(UpdateUserRequest $request): RedirectResponse
     {
         try {
-            $this->user->editUserDetails($uuid, $request->validated());
+            $this->user->editUserDetails(\request()->user(), $request->validated());
         } catch (UserError $error) {
             return redirect()->back()->with('error', $error->getMessage());
         } catch (\Exception $exception) {

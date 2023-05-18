@@ -149,7 +149,7 @@ export default {
   methods: {
     updateProfile() {
       this.section = 'profile'
-      this.profile_form.post(`/user/update/${this.user.uuid}`)
+      this.profile_form.post(`/user/update`)
     },
     updatePassword() {
       this.section = 'password'

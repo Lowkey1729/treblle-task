@@ -6,8 +6,8 @@
       </Link>
     </div>
     <div class="mb-4">
-      <Link class="group flex items-center py-3" :href="`/user/view/${auth.user.uuid}`">
-        <div :class="isUrl('`user/view/${auth.user.uuid}`') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">Profile</div>
+      <Link class="group flex items-center py-3" href="/user/view">
+        <div :class="isUrl('user/view') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">Profile</div>
       </Link>
     </div>
   </div>
