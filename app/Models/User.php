@@ -31,7 +31,7 @@ use Laravel\Sanctum\PersonalAccessToken;
  * @property Carbon|null $email_verified_at
  * @property string $password
  * @property string|null $remember_token
- * @property string|null $deleted
+ * @property string|null $deleted_at
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property-read DatabaseNotificationCollection<int, DatabaseNotification> $notifications
@@ -44,7 +44,7 @@ use Laravel\Sanctum\PersonalAccessToken;
  * @method static Builder|User newQuery()
  * @method static Builder|User query()
  * @method static Builder|User whereCreatedAt($value)
- * @method static Builder|User whereDeleted($value)
+ * @method static Builder|User whereDeletedAt($value)
  * @method static Builder|User whereEmail($value)
  * @method static Builder|User whereEmailVerifiedAt($value)
  * @method static Builder|User whereFirstName($value)
@@ -90,6 +90,7 @@ class User extends Authenticatable
         'password',
         'remember_token',
         'id',
+        'deleted_at'
     ];
 
     /**
