@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\Auth\APIAuthSessionController;
+use App\Http\Controllers\API\Auth\APIPasswordController;
 use App\Http\Controllers\API\Auth\APIRegisterUserController;
 use App\Http\Controllers\API\User\UserController;
 use Illuminate\Http\Request;
@@ -42,4 +43,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::get('auth/logout', [APIAuthSessionController::class, 'logoutUser'])
         ->name('auth.logout-user');
+
+    Route::put('auth/update/password', [APIPasswordController::class, 'updatePassword'])
+        ->name('auth.update.password');
 });
