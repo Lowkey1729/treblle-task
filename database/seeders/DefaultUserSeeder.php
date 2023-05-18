@@ -15,7 +15,7 @@ class DefaultUserSeeder extends Seeder
         User::factory()->create([
             'first_name' => 'John',
             'last_name' => 'Doe',
-            'email' => 'johndoe9@gmail.com',
+            'email' => 'treblle-admin@gmail.com',
             'phone_number' => '+2349010768387',
             'email_verified_at' => now(),
             'password' => bcrypt('password'),
