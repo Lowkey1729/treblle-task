@@ -3,8 +3,6 @@
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-uses(RefreshDatabase::class);
-
 test('it can view user details', function () {
     $user = User::factory()->create();
 

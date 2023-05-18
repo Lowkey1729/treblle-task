@@ -5,8 +5,6 @@ use App\Exceptions\UserError;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-uses(RefreshDatabase::class);
-
 beforeEach(function () {
     $this->userAction = app(UserAction::class);
 });
