@@ -13,6 +13,8 @@
         <h3 class="text-xl font-semibold inline-block">Personal Information</h3>
       </div>
 
+        <flash-messages v-if="section === 'profile'" />
+
       <div class="max-w-3xl bg-gray-100 rounded-md shadow overflow-hidden relative">
         <form class="mb-0 mt-3 space-y-4 rounded-lg p-2 shadow-lg sm:p-6 lg:p-8" @submit.prevent="updateProfile">
           <div class="grid lg:grid-cols-2 grid-cols-1 gap-3 mb-7">
@@ -49,7 +51,7 @@
             </div>
 
             <div class="absolute bottom-0 left-0">
-              <button type="submit" class="block lg:mb-2 lg:ml-8 ml-3 mt-2 w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white">Update Details</button>
+              <button type="submit" class="block lg:mb-2 lg:ml-8 ml-3 mt-2 w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white">Update</button>
             </div>
           </div>
         </form>
@@ -61,11 +63,13 @@
         <h3 class="text-xl font-semibold inline-block">Change Password</h3>
       </div>
 
+      <flash-messages v-if="section === 'password'" />
+
       <div class="max-w-3xl bg-gray-100 rounded-md shadow overflow-hidden relative">
         <form class="mb-0 mt-3 space-y-4 rounded-lg p-2 shadow-lg sm:p-6 lg:p-8" @submit.prevent="updatePassword">
           <div class="grid lg:grid-cols-2 grid-cols-1 gap-3 mb-7">
             <div>
-              <text-input v-model:inputValue="password_form.old_password" label="Old Password" placeholder="Enter email" :error="profile_form.errors.email" class="relative" type="email" autofocus autocapitalize="off">
+              <text-input v-model:inputValue="password_form.old_password" label="Old Password" :error="password_form.errors.old_password" class="relative" type="password" autofocus autocapitalize="off">
                 <span class="absolute inset-y-0 end-0 grid place-content-center px-4">
                   <password />
                 </span>
@@ -73,7 +77,7 @@
             </div>
 
             <div>
-              <text-input v-model:inputValue="password_form.new_password" label="New Password" placeholder="Enter first name" :error="profile_form.errors.first_name" class="relative" type="text" autofocus autocapitalize="off">
+              <text-input v-model:inputValue="password_form.password" label="New Password" :error="password_form.errors.password" class="relative" type="password" autofocus autocapitalize="off">
                 <span class="absolute inset-y-0 end-0 grid place-content-center px-4">
                   <password />
                 </span>
@@ -81,7 +85,7 @@
             </div>
 
             <div>
-              <text-input v-model:inputValue="password_form.confirm_password" label="Confirm Password" placeholder="Enter last name" :error="profile_form.errors.last_name" class="relative" type="text" autofocus autocapitalize="off">
+              <text-input v-model:inputValue="password_form.password_confirmation" label="Confirm Password" :error="password_form.errors.password_confirmation" class="relative" type="password" autofocus autocapitalize="off">
                 <span class="absolute inset-y-0 end-0 grid place-content-center px-4">
                   <password />
                 </span>
@@ -89,7 +93,7 @@
             </div>
 
             <div class="absolute bottom-0 left-0">
-              <button type="submit" class="block lg:mb-2 lg:ml-8 ml-3 mt-2 w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white">Update Details</button>
+              <button type="submit" class="block lg:mb-2 lg:ml-8 ml-3 mt-2 w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white">Update</button>
             </div>
           </div>
         </form>
@@ -106,6 +110,7 @@ import Telephone from '@/Shared/SVGs/Telephone'
 import Email from '@/Shared/SVGs/Email'
 import User from '@/Shared/SVGs/User'
 import Password from '@/Shared/SVGs/Password'
+import FlashMessages from '@/Shared/Flash/FlashMessages'
 
 export default {
   components: {
@@ -116,6 +121,7 @@ export default {
     Email,
     Telephone,
     Password,
+    FlashMessages,
   },
   layout: Sidebar,
   props: {
@@ -123,6 +129,7 @@ export default {
   },
   data() {
     return {
+      section: '',
       profile_form: this.$inertia.form({
         _method: 'put',
         first_name: this.user.first_name,
@@ -133,18 +140,20 @@ export default {
 
       password_form: this.$inertia.form({
         __method: 'put',
+        password: '',
         old_password: '',
-        new_password: '',
-        confirm_password: '',
+        password_confirmation: '',
       }),
     }
   },
   methods: {
     updateProfile() {
+      this.section = 'profile'
       this.profile_form.post(`/user/update/${this.user.uuid}`)
     },
     updatePassword() {
-      this.updatePassword.post(`/user/update/${this.user.uuid}`)
+      this.section = 'password'
+      this.password_form.put('/auth/update/password', { preserveScroll: true })
     },
   },
 }

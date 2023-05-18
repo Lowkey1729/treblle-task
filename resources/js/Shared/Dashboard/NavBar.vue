@@ -22,7 +22,6 @@
         <div class="md:flex md:flex-grow md:overflow-hidden">
           <main-menu :auth="auth" class="hidden flex-shrink-0 p-12 w-56 bg-indigo-800 overflow-y-auto md:block" />
           <div class="px-4 py-8 md:flex-1 md:p-12 md:overflow-y-auto" scroll-region>
-            <flash-messages />
             <slot />
           </div>
         </div>
@@ -33,20 +32,14 @@
 
 <script>
 import { Link } from '@inertiajs/vue3'
-// import Icon from '@/Shared/Icon'
 import Logo from '@/Shared/Logos/Logo'
-// import Dropdown from '@/Shared/Dropdown'
-import MainMenu from '@/Shared/Dashboard/SideBar.vue'
-import FlashMessages from '@/Shared/Flash/FlashMessages'
+import SideBar from '@/Shared/Dashboard/SideBar.vue'
 
 export default {
   components: {
-    // Dropdown,
-    FlashMessages,
-    // Icon,
     Link,
     Logo,
-    MainMenu,
+    MainMenu: SideBar,
   },
   props: {
     auth: Object,
