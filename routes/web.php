@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Web\Auth\WebAuthSessionController;
+use App\Http\Controllers\Web\Auth\WebPasswordController;
 use App\Http\Controllers\Web\Auth\WebRegisterUserController;
 use App\Http\Controllers\Web\Dashboard\DashboardController;
 use App\Http\Controllers\Web\User\UserController;
@@ -53,5 +54,8 @@ Route::middleware(['auth:web', 'verified'])->group(function () {
 
     Route::get('auth/logout', [WebAuthSessionController::class, 'logoutUser'])
         ->name('auth-web.logout-user');
+
+    Route::put('auth/update/password', [WebPasswordController::class, 'updatePassword'])
+        ->name('auth.web.update.password');
 
 });
