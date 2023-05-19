@@ -20,7 +20,7 @@
           <div class="grid lg:grid-cols-2 grid-cols-1 gap-3 mb-7">
             <div>
               <text-input v-model:inputValue="profile_form.email" label="Email" placeholder="Enter email" :error="profile_form.errors.email" class="relative" type="email" autofocus autocapitalize="off">
-                <span class="absolute inset-y-0 end-0 grid place-content-center px-4">
+                <span class="absolute right-0 place-content-center my-4  px-4">
                   <email />
                 </span>
               </text-input>
@@ -28,7 +28,7 @@
 
             <div>
               <text-input v-model:inputValue="profile_form.first_name" label="First Name" placeholder="Enter first name" :error="profile_form.errors.first_name" class="relative" type="text" autofocus autocapitalize="off">
-                <span class="absolute inset-y-0 end-0 grid place-content-center px-4">
+                <span class="absolute right-0 place-content-center my-4 place-content-center px-4">
                   <user />
                 </span>
               </text-input>
@@ -36,7 +36,7 @@
 
             <div>
               <text-input v-model:inputValue="profile_form.last_name" label="Last Name" placeholder="Enter last name" :error="profile_form.errors.last_name" class="relative" type="text" autofocus autocapitalize="off">
-                <span class="absolute inset-y-0 end-0 grid place-content-center px-4">
+                <span class="absolute right-0 place-content-center my-4  place-content-center px-4">
                   <user />
                 </span>
               </text-input>
@@ -44,7 +44,7 @@
 
             <div>
               <text-input v-model:inputValue="profile_form.phone_number" label="Phone Number" placeholder="Enter phone number" :error="profile_form.errors.phone_number" class="relative" type="text" autofocus autocapitalize="off">
-                <span class="absolute inset-y-0 end-0 grid place-content-center px-4">
+                <span class="absolute right-0 place-content-center my-4  place-content-center px-4">
                   <telephone />
                 </span>
               </text-input>
@@ -70,7 +70,7 @@
           <div class="grid lg:grid-cols-2 grid-cols-1 gap-3 mb-7">
             <div>
               <text-input v-model:inputValue="password_form.old_password" label="Old Password" :error="password_form.errors.old_password" class="relative" type="password" autofocus autocapitalize="off">
-                <span class="absolute inset-y-0 end-0 grid place-content-center px-4">
+                <span class="absolute right-0 place-content-center my-4 place-content-center px-4">
                   <password />
                 </span>
               </text-input>
@@ -78,7 +78,7 @@
 
             <div>
               <text-input v-model:inputValue="password_form.password" label="New Password" :error="password_form.errors.password" class="relative" type="password" autofocus autocapitalize="off">
-                <span class="absolute inset-y-0 end-0 grid place-content-center px-4">
+                <span class="absolute right-0 place-content-center my-4  place-content-center px-4">
                   <password />
                 </span>
               </text-input>
@@ -86,7 +86,7 @@
 
             <div>
               <text-input v-model:inputValue="password_form.password_confirmation" label="Confirm Password" :error="password_form.errors.password_confirmation" class="relative" type="password" autofocus autocapitalize="off">
-                <span class="absolute inset-y-0 end-0 grid place-content-center px-4">
+                <span class="absolute right-0 place-content-center my-4  place-content-center px-4">
                   <password />
                 </span>
               </text-input>
