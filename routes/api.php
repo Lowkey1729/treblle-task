@@ -3,7 +3,7 @@
 use App\Http\Controllers\API\Auth\APIAuthSessionController;
 use App\Http\Controllers\API\Auth\APIPasswordController;
 use App\Http\Controllers\API\Auth\APIRegisterUserController;
-use App\Http\Controllers\API\User\UserController;
+use App\Http\Controllers\API\User\APIUserController;
 use App\Services\Helpers\ApiResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -35,10 +35,10 @@ Route::prefix('auth')->group(function () {
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::prefix('user')->group(function () {
-        Route::get('/view', [UserController::class, 'viewUserDetails'])
+        Route::get('/view', [APIUserController::class, 'viewUserDetails'])
             ->name('view-user-details');
 
-        Route::put('update', [UserController::class, 'updateUserDetails'])
+        Route::put('update', [APIUserController::class, 'updateUserDetails'])
             ->name('update-user-details');
     });
 

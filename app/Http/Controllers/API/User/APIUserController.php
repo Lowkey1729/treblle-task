@@ -10,7 +10,7 @@ use App\Services\Helpers\ApiResponse;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class APIUserController extends Controller
 {
     public function __construct(protected readonly UserInterface $user)
     {

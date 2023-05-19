@@ -3,8 +3,8 @@
 use App\Http\Controllers\Web\Auth\WebAuthSessionController;
 use App\Http\Controllers\Web\Auth\WebPasswordController;
 use App\Http\Controllers\Web\Auth\WebRegisterUserController;
-use App\Http\Controllers\Web\Dashboard\DashboardController;
-use App\Http\Controllers\Web\User\UserController;
+use App\Http\Controllers\Web\Dashboard\WebDashboardController;
+use App\Http\Controllers\Web\User\WebUserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,14 +42,14 @@ Route::prefix('auth')->group(function () {
 Route::middleware(['auth:web', 'verified'])->group(function () {
 
     Route::prefix('user')->group(function () {
-        Route::get('/view', [UserController::class, 'viewUserDetails'])
+        Route::get('/view', [WebUserController::class, 'viewUserDetails'])
             ->name('web.view-user-details');
 
-        Route::put('update', [UserController::class, 'updateUserDetails'])
+        Route::put('update', [WebUserController::class, 'updateUserDetails'])
             ->name('web.update-user-details');
     });
 
-    Route::get('dashboard', [DashboardController::class, 'index'])
+    Route::get('dashboard', [WebDashboardController::class, 'index'])
         ->name('web.dashboard.index');
 
     Route::get('auth/logout', [WebAuthSessionController::class, 'logoutUser'])

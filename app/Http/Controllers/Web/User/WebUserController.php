@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
 
-class UserController extends Controller
+class WebUserController extends Controller
 {
     public function __construct(protected readonly UserInterface $user)
     {
