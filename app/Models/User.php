@@ -26,6 +26,7 @@ use Laravel\Sanctum\PersonalAccessToken;
  * @property string $email
  * @property string $first_name
  * @property string $last_name
+ * @property string $full_name
  * @property string $phone_number
  * @property string $plainTextToken
  * @property Carbon|null $email_verified_at
