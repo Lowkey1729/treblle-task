@@ -22,7 +22,7 @@ test('it returns failed response when the old password entered is incorrect', fu
     $result = $this->putJson(route('auth.update.password'), [
         'password' => 'password',
         'old_password' => fake()->password(19),
-        'password_confirmation' => 'password'
+        'password_confirmation' => 'password',
     ])
         ->assertStatus(200)
         ->json();
@@ -41,7 +41,7 @@ test('it returns successful response when a password is updated', function () {
     $result = $this->putJson(route('auth.update.password'), [
         'password' => $password,
         'old_password' => 'password',
-        'password_confirmation' => $password
+        'password_confirmation' => $password,
     ])
         ->assertStatus(200)
         ->json();

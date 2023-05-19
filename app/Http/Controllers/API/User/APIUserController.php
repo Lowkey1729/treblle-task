@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers\API\User;
 
-use App\Exceptions\UserError;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\UpdateUserRequest;
 use App\Services\Contracts\User\UserInterface;
 use App\Services\Helpers\ApiResponse;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
 class APIUserController extends Controller
 {
@@ -37,6 +35,4 @@ class APIUserController extends Controller
 
         return ApiResponse::success($user);
     }
-
-
 }

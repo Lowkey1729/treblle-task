@@ -1,7 +1,6 @@
 <?php
 
 use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 test('it can view user details', function () {
     $user = User::factory()->create();
@@ -27,5 +26,3 @@ test('it can validate a update user request', function () {
         ->errorMessage->toBeString()
         ->data->toBe([]);
 });
-
-

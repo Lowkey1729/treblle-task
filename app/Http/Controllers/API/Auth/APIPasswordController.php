@@ -8,7 +8,6 @@ use App\Http\Requests\Auth\PasswordRequest;
 use App\Services\Contracts\Auth\PasswordInterface;
 use App\Services\Helpers\ApiResponse;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
 class APIPasswordController extends Controller
 {

@@ -90,7 +90,7 @@ class User extends Authenticatable
         'password',
         'remember_token',
         'id',
-        'deleted_at'
+        'deleted_at',
     ];
 
     /**

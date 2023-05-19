@@ -1,7 +1,6 @@
 <?php
 
 use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 test('it can view user details via web', function () {
     $user = User::factory()->create();
@@ -27,11 +26,11 @@ test('it returns a failed response when a user to be updated cannot be found', f
 
     $this->actingAs($user);
 
-     $this->post(route('web.update-user-details'), [
+    $this->post(route('web.update-user-details'), [
         'email' => $user->email,
         'first_name' => 'foo',
         'last_name' => 'bar',
-        'phone_number' => $user->phone_number
+        'phone_number' => $user->phone_number,
     ])->assertRedirect();
 
 });

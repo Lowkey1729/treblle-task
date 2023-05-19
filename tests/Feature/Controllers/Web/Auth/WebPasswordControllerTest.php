@@ -22,7 +22,7 @@ test('it redirects back with error response when an invalid old password is ente
     $this->put(route('auth.web.update.password'), [
         'password' => 'password',
         'old_password' => fake()->password(19),
-        'password_confirmation' => 'password'
+        'password_confirmation' => 'password',
     ]
     )
         ->assertRedirect()
@@ -35,10 +35,10 @@ test('it successfully updates user password', function () {
     $this->actingAs($user);
     $password = fake()->password(9);
     $this->put(route('auth.web.update.password'), [
-            'password' => $password,
-            'old_password' => 'password',
-            'password_confirmation' => $password
-        ]
+        'password' => $password,
+        'old_password' => 'password',
+        'password_confirmation' => $password,
+    ]
     )
         ->assertRedirect()
         ->assertSessionHas('success');

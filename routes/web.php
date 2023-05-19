@@ -22,7 +22,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
 Route::prefix('auth')->group(function () {
 
     Route::get('/login', [WebAuthSessionController::class, 'loginForm'])

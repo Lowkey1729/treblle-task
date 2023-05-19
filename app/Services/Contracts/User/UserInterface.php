@@ -9,10 +9,7 @@ interface UserInterface
     public function viewUserDetails(User $user): User;
 
     /**
-     * @param User $user
-     * @param array<string, mixed> $data
-     * @return User
+     * @param  array<string, mixed>  $data
      */
     public function editUserDetails(User $user, array $data): User;
-
 }

@@ -15,7 +15,7 @@ test('it validates login request', function () {
         );
 });
 
-test('it successfully registers user', function (){
+test('it successfully registers user', function () {
     $user = User::factory()->create();
     $data = [
         'email' => $user->email,
@@ -26,7 +26,6 @@ test('it successfully registers user', function (){
     $this->assertAuthenticated();
     $result->assertRedirect(RouteServiceProvider::HOME);
 });
-
 
 test('it returns 401 when an unauthenticated user tries to logout', function () {
     $this->getJson(route('auth.logout-user'))

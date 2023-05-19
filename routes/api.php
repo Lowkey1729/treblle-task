@@ -49,7 +49,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         ->name('auth.update.password');
 });
 
-
-Route::fallback(function (){
-   return ApiResponse::failed('Resource not found.', httpStatusCode: 404);
+Route::fallback(function () {
+    return ApiResponse::failed('Resource not found.', httpStatusCode: 404);
 });

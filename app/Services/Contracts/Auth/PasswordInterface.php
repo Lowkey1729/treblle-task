@@ -7,10 +7,7 @@ use App\Models\User;
 interface PasswordInterface
 {
     /**
-     * @param User $user
-     * @param array<string, mixed> $data
-     * @return void
+     * @param  array<string, mixed>  $data
      */
     public function updatePassword(User $user, array $data): void;
-
 }

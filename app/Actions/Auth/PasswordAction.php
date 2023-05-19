@@ -9,13 +9,12 @@ use Illuminate\Support\Facades\Hash;
 
 class PasswordAction implements PasswordInterface
 {
-
     /**
      * @throws PasswordError
      */
     public function updatePassword(User $user, array $data): void
     {
-        if (!Hash::check($data['old_password'], $user->password)) {
+        if (! Hash::check($data['old_password'], $user->password)) {
             throw new PasswordError('The retrieved password does not match our record.');
         }
 

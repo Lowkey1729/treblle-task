@@ -24,10 +24,10 @@ test('it successfully register users', function () {
         'first_name' => fake()->firstName,
         'last_name' => fake()->lastName,
         'phone_number' => fake()->phoneNumber,
-        'password_confirmation' => 'password'
+        'password_confirmation' => 'password',
     ];
     $result = $this->post(route('auth.web.register-user'), $data);
 
     $this->assertAuthenticated();
-        $result->assertRedirect(RouteServiceProvider::HOME);
+    $result->assertRedirect(RouteServiceProvider::HOME);
 });
