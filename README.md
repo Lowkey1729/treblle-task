@@ -6,6 +6,12 @@ The user should be able to update these details through a web interface as well 
 
 <img src="public/scrreenshot-1.png"/>
 
+# Api Documentation
+<img src="public/screenshot-2.png"/>
+
+## Link to Api documentation
+[https://documenter.getpostman.com/view/14195862/2s93m1YP2C](https://documenter.getpostman.com/view/14195862/2s93m1YP2C)
+
 ## Installation
 
 Clone the repo locally:
