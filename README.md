@@ -51,11 +51,14 @@ Generate application key:
 php artisan key:generate
 ```
 
-Create an SQLite database. You can also use another database (MySQL, Postgres), simply update your configuration accordingly.
+In order to be able to run the test cases, Create an SQLite database. You can also use another database (MySQL, Postgres), simply update your configuration accordingly.
 
 ```sh
 touch database/database.sqlite
 ```
+
+Create a mysql database and simply update your configuration accordingly.
+
 
 Run database migrations:
 
